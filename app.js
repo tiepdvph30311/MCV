@@ -18,7 +18,7 @@ mongoose.connect(`${url}/${db_name}`).then(()=>
         console.log("Kết nối thành công");
         //tiếp tục khởi động express
         app.listen('9999',()=>{
-            console.log("đang chạy dưới cổng 9999");
+            console.log("đang chạy dưới cổng 999");
         });
     }).catch((err)=>{
         console.log('lỗi kết nối mongoDB',err);

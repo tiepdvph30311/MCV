@@ -8,21 +8,22 @@ const router = express.Router();
 // định nghĩa các route
 
 // xử lý tạo mới sản phẩm
-router.post("/add", upload.single('anh_sp'),productController.getFormAdd);
+// router.post("/add", upload.single('anh_sp'),productController.getFormAdd);
 // hiển thị danh sách
 router.get("/", productController.getList);
 
 // hiển thị trang tạo sản phẩm
 router.get("/add", productController.getFormAdd);
+router.get("/api/list",productController.getlistApi);
 
 // xử lý tạo mới sản phẩm
-// router.post("/add", productController.postFormAdd);
+router.post("/add",upload.single('anh_sp'),productController.postFormAdd);
 
 // hiển thị trang sửa sản phẩm
 router.get("/sua/:id", productController.getFormEdit);
 
 // xử lý sửa sản phẩm
-router.post("/sua/:id", productController.postEdit);
+router.post("/sua/:id",upload.single('anh_sp'),productController.postEdit);
 
 //xóa sản phẩm
 router.get("/delete/:id", productController.deleteProducts);

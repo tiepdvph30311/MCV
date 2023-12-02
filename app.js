@@ -5,6 +5,7 @@ const express=require('express');
 const mongoose=require('mongoose');
 const productRoutes=require('./routes/web');
 const app=express();
+var bodyPaser=require('body-parser');
 
 
 const url='mongodb://localhost:27017';
@@ -28,6 +29,9 @@ app.use(express.urlencoded({extended:true}));
 app.set('view engine','hbs');
 app.use('/uploads',express.static('uploads'));
 app.use('/',productRoutes);
+app.use(bodyPaser.json());
+app.use(bodyPaser.urlencoded({extended:true}));
+
 
 
     

@@ -11,7 +11,16 @@ exports.getList = (req, res) => {
       res.status(500).send("Internal Sever 1");
     });
 };
-
+exports.getlistApi = (req, res) => {
+  Item.find()
+    .then((items) => {
+      res.json( { items});
+    })
+    .catch((err) => {
+      console.log("Erorr retrieving items:", err);
+      res.status(500).send("Internal Sever 1");
+    });
+};
 exports.getFormAdd = (req, res) => {
   // render đến thư mục products và mở trang add.hbs gắn vào body trong thư mục layouts trong file main
   res.render("products/add", { layout: "layouts/main" });
@@ -28,7 +37,7 @@ exports.postFormAdd = (req, res) => {
     mo_ta: req.body.mo_ta,
 
     // Đối với ảnh phải dùng req.file chứ không dùng req.body nữa
-    anh_sp: req.file.anh_sp
+    anh_sp: req.file.path
   });
 
   newItem
@@ -56,15 +65,32 @@ exports.getFormEdit = (req, res) => {
 };
 exports.postEdit = (req, res) => {
   const itemID = req.params.id;
-  Item.findByIdAndUpdate(itemID, req.body)
-    .then(() => {
+  const updatedItem = {
+    ten_sp: req.body.ten_sp,
+    gia_tien: req.body.gia_tien,
+    so_luong: req.body.so_luong,
+    mo_ta: req.body.mo_ta,
+  };
+
+  if (req.file) {
+    updatedItem.anh_sp = req.file.path;
+  }
+
+  Item.findByIdAndUpdate(itemID, updatedItem, { new: true }) // Thêm { new: true } để nhận được tài liệu sau khi cập nhật
+    .then((updatedDocument) => {
+      if (!updatedDocument) {
+        // Nếu không tìm thấy tài liệu cần cập nhật
+        return res.status(404).send("Không tìm thấy sản phẩm");
+      }
+
       res.redirect("/");
     })
     .catch((error) => {
-      console.log("Erorr Saving item:", error);
-      res.status(500).send("Internal Sever 4");
+      console.log("Lỗi khi cập nhật sản phẩm:", error);
+      res.status(500).send("Internal Server Error");
     });
 };
+
 exports.deleteProducts = (req, res) => {
   const itemID = req.params.id;
 

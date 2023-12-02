@@ -26,6 +26,7 @@ mongoose.connect(`${url}/${db_name}`).then(()=>
 
 app.use(express.urlencoded({extended:true}));
 app.set('view engine','hbs');
+app.use('/uploads',express.static('uploads'));
 app.use('/',productRoutes);
 
 

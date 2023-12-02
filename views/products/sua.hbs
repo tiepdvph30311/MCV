@@ -72,7 +72,7 @@
 </head>
 <body>
       <div class="container col-6 mt-5 ">
-        <form class="row g-3 d-flex justify-content-center" action="/sua/{{item.id}}" method="post">
+        <form class="row g-3 d-flex justify-content-center" action="/sua/{{item.id}}" method="post" enctype="multipart/form-data">
             <h2 class="d-flex justify-content-center">Sửa Sản Phẩm</h2>
             <div class="col-md-12">
                 <label for="inputEmail4" class="form-label">Tên Sản Phẩm</label></label>
@@ -85,6 +85,10 @@
              <div class="col-md-12">
                 <label for="inputEmail4" class="form-label">Số Lượng</label></label>
                 <input type="number" class="form-control" name="so_luong" value="{{item.so_luong}}" id="inputEmail4">
+            </div>
+             <div class="col-md-12">
+                <label for="anh_sp" class="form-label">Ảnh SP:</label></label>
+                <input type="file" class="form-control" name="anh_sp" id="anh_sp" value="{{item.anh_sp}}" required >
             </div>
              <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Mô tả</label>

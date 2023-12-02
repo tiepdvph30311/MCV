@@ -76,7 +76,7 @@
 </head>
 <body>
       <div class="container col-6 mt-5 ">
-        <form class="row g-3 d-flex justify-content-center" action="./add" method="post">
+        <form class="row g-3 d-flex justify-content-center" action="./add" method="post" enctype="multipart/form-data">
             <h2 class="d-flex justify-content-center">Thêm Sản Phẩm</h2>
             <div class="col-md-12">
                 <label for="ten_sp" class="form-label">Tên Sản Phẩm</label></label>
@@ -86,9 +86,13 @@
                 <label for="gia_tien" class="form-label">Giá Sản Phẩm</label></label>
                 <input type="number" class="form-control" name="gia_tien" id="gia_tien" required>
             </div>
-             <div class="col-md-12">
+         <div class="col-md-12">
                 <label for="so_luong" class="form-label">Số Lượng</label></label>
                 <input type="number" class="form-control" name="so_luong" id="so_luong" required >
+            </div>
+             <div class="col-md-12">
+                <label for="anh_sp" class="form-label">Ảnh SP:</label></label>
+                <input type="file" class="form-control" name="anh_sp" id="anh_sp" required >
             </div>
              <div class="mb-3">
                 <label for="mo_ta" class="form-label">Mô tả</label>
@@ -99,10 +103,7 @@
             </div>
              <a><button type="submit" class="btn-outline-success"><i class="fa-solid fa-check"></i></button></a>
         </form>
-      
-                    <a href="/" style="color: white; text-decoration: none; " > <button type="reset" class="btn btn-primary" >Quay lai</button></a>
-
-
+            <a href="/" style="color: white; text-decoration: none; " > <button type="reset" class="btn btn-primary" >Quay lai</button></a>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>

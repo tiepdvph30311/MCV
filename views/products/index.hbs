@@ -22,8 +22,8 @@
       <nav class="navbar bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand"></a>
-    <form class="d-flex" role="search" action="/search" method="post">
-      <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
+    <form class="d-flex" role="search" action="/search1" method="POST">
+      <input class="form-control me-2" type="search" name="search1" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
   </div>
@@ -37,6 +37,7 @@
             <th>Giá tiền</th>
             <th>Số lượng</th>
             <th>Mô tả</th>
+            <th>Ảnh SP</th>
           </tr>
         </thead>
         <tbody>
@@ -49,6 +50,7 @@
             <td>{{this.gia_tien}}</td>
             <td>{{this.so_luong}}</td>
             <td>{{this.mo_ta}}</td>
+           <td><img src="{{this.anh_sp}}" width="100px" alt="không có"></td>
             <td>      
              <a class="btn btn-outline-success " href="/sua/{{this.id}}">       
              <i class="fa-solid fa-pen"></i>
